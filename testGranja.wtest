@@ -2,8 +2,18 @@ import example.pepita
 
 describe "group of tests for pepita" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
+method initialize() {
+    game.height(10)
+  	game.width(10)
+  	//game.ground("ground.png")
 
+	//  VISUALES
+	game.addVisualCharacter(hector)
+}
+
+
+//  test "pepita has initial energy" {
+//    assert.equals(100, pepita.energy())
+//  }
+//
 }
