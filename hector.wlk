@@ -23,10 +23,6 @@ object hector {
 		}
 	}
 
-	//method hayPlantaAca(pos){
-	//	return (game.getObjectsIn(pos).size() != 1)
-	//}
-
 	method hayPlantaAca(){
 		return (game.colliders(self).size() == 1)
 	}
@@ -71,9 +67,20 @@ object hector {
 
 //---------------------------------VENTA---------------------------------------
 
-method vender(){
+	method vender(){
+		self.validarSiPuedeVender()
+		oro += plantasCultivadas.sum({planta => planta.valor()})
+		plantasCultivadas.clear()
+	}
 
+	method validarSiPuedeVender(){
+		if (plantasCultivadas.isEmpty()){
+			self.error("No hay nada para vender")
+		}
 }
 
+method verEstadisticas(){
+	game.say(self, "Tengo "+ oro +" monedas de oro y todavia puedo vender " + plantasCultivadas.size() + " plantas")
+}
 
 }
