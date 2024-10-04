@@ -66,8 +66,8 @@ object hector {
 	}
 
 //---------------------------------VENTA---------------------------------------
-
-	method vender(){
+//Error, no suma el oro por alguna razon
+	method vender(){ 
 		self.validarSiPuedeVender()
 		oro += plantasCultivadas.sum({planta => planta.valor()})
 		plantasCultivadas.clear()
@@ -82,5 +82,20 @@ object hector {
 method verEstadisticas(){
 	game.say(self, "Tengo "+ oro +" monedas de oro y todavia puedo vender " + plantasCultivadas.size() + " plantas")
 }
+
+//---------------------------------ASPERSOR---------------------------------------
+//Error, riega a los costados por alguna razon
+	method ponerAspersor(){
+		self.validarSiPuedePonerAspersor()
+		const aspersor = new Aspersor(position = self.position())
+		game.addVisual(aspersor)
+		game.schedule(1000,	aspersor.regarCostados(position))
+} 
+
+	method validarSiPuedePonerAspersor(){
+		if(self.hayPlantaAca()){
+			self.error("No puedo poner un aspersor aca")
+		}
+	}
 
 }

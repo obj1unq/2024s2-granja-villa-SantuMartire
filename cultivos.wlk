@@ -76,3 +76,46 @@ class Tomaco {
 		game.removeVisual(self)
 	}
 }
+
+//---------------------------------ASPERSOR---------------------------------------
+
+class Aspersor{
+	var property position 	= null
+
+	method image() = ("aspersor.png")
+
+	method regarCostados(pos){
+		self.regarArriba(pos)
+		self.regarAbajo(pos)
+		self.regarIzq(pos)
+		self.regarDer(pos)
+	}
+
+	method regarArriba(pos){
+		//position =  pos.up(1)
+		const cultivo = game.uniqueCollider(pos.up(1))
+		cultivo.riego()
+	}
+
+	method regarAbajo(pos){
+		// position =  pos.down(1)
+		const cultivo = game.uniqueCollider(pos.down(1))
+		cultivo.riego()
+	}
+
+	method regarIzq(pos){
+		// position =  pos.left(1)
+		const cultivo = game.uniqueCollider(pos.left(1))
+		cultivo.riego()
+	}
+
+	method regarDer(pos){
+		// position =  pos.right(1)
+		const cultivo = game.uniqueCollider(pos.right(1))
+		cultivo.riego()
+	}
+
+	method riego(){
+		
+	}
+}
